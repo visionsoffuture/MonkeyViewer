@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Monkey Viewer policies for macOS (deploy with your MDM). Delete the keys you don't need; true = on. -->
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadType</key>
+            <string>ge.easy.monkeyviewer</string>
+            <key>PayloadIdentifier</key>
+            <string>ge.easy.monkeyviewer.policies.settings</string>
+            <key>PayloadUUID</key>
+            <string>2084B07E-111B-4E12-9D8D-39B335E5B49F</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>DisableAssociationPrompt</key>
+            <false/>
+            <key>DisableAssociationChanges</key>
+            <false/>
+            <key>DisableExternalTools</key>
+            <false/>
+            <key>DisableDecryption</key>
+            <false/>
+            <key>ReadOnly</key>
+            <false/>
+            <key>DisableAuditLog</key>
+            <false/>
+            <key>AuditFileHashes</key>
+            <false/>
+            <!-- Interface language for everyone: ka (Georgian) or en (English); delete to let users choose -->
+            <key>Language</key>
+            <string>ka</string>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Monkey Viewer policies</string>
+    <key>PayloadIdentifier</key>
+    <string>ge.easy.monkeyviewer.policies</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>16DA64A2-203C-4E0C-A549-825288355C02</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

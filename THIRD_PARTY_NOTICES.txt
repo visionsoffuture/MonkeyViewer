@@ -1,0 +1,55 @@
+Monkey Viewer 1.0 - Third-party components
+=========================================
+
+Monkey Viewer bundles the components below. Their full licence texts are installed with the program in the
+"licenses" folder (Windows: C:\Program Files\Monkey Viewer\_internal\licenses; macOS: inside the app bundle,
+Contents/Resources/licenses). The exact versions are recorded in requirements-lock.txt and in the
+machine-readable software bill of materials (MonkeyViewer-<version>-sbom.cdx.json, CycloneDX 1.6) published
+with every release.
+
+Component            Version    Licence                                   Source
+-------------------  ---------  ----------------------------------------  ---------------------------------------------
+Python runtime       3.12       PSF-2.0                                   https://www.python.org/downloads/source/
+Tcl/Tk               8.6        Tcl/Tk licence (BSD-style)                https://www.tcl.tk/software/tcltk/
+PyMuPDF (MuPDF)      1.28.2     AGPL-3.0 (or Artifex commercial)          https://github.com/pymupdf/PyMuPDF
+Pillow               13.0.0     MIT-CMU (bundled codecs: see licences)    https://github.com/python-pillow/Pillow
+NumPy                2.5.4      BSD-3-Clause and others (see licences)    https://github.com/numpy/numpy
+ezdxf                1.4.5      MIT                                       https://github.com/mozman/ezdxf
+pyshp                3.1.6      MIT                                       https://github.com/GeospatialPython/pyshp
+cryptography         50.0.2     Apache-2.0 OR BSD-3-Clause (OpenSSL: Apache-2.0)  https://github.com/pyca/cryptography
+asn1crypto           1.5.1      MIT                                       https://github.com/wbond/asn1crypto
+defusedxml           0.7.1      PSF-2.0                                   https://github.com/tiran/defusedxml
+tkinterdnd2 (tkdnd)  0.6.4      MIT (tkdnd: BSD-style)                    https://github.com/Eliav2/tkinterdnd2
+pi-heif              1.4.0      BSD-3-Clause; libheif, libde265: LGPL-3.0 https://github.com/bigcat88/pillow_heif
+resvg-py (resvg)     0.5.0      MIT (resvg: Apache-2.0 OR MIT)            https://github.com/baseplate-admin/resvg-py
+cffi                 2.1.1      MIT-0                                     https://github.com/python-cffi/cffi
+pycparser            3.11       BSD-3-Clause                              https://github.com/eliben/pycparser
+fontTools            4.67.0     MIT                                       https://github.com/fonttools/fonttools
+pyparsing            3.3.3      MIT                                       https://github.com/pyparsing/pyparsing
+typing-extensions    4.16.0     PSF-2.0                                   https://github.com/python/typing_extensions
+PyInstaller loader   6.22.3     GPL-2.0-or-later with bootloader exception https://github.com/pyinstaller/pyinstaller
+
+Notes
+-----
+* AGPL-3.0 (PyMuPDF / MuPDF): see LICENSE.txt, section 3. The source code of the exact versions is available
+  at the links above (release tags matching the versions listed).
+* LGPL-3.0 (libheif, libde265): the libraries are shipped as separate, replaceable shared libraries
+  (libheif / libde265 .dll / .dylib) and are used unmodified. Source: https://github.com/strukturag/libheif
+  (v1.18.1) and https://github.com/strukturag/libde265 (v1.0.15).
+* PyInstaller's bootloader exception allows distributing the generated program under any licence.
+
+Bundled helper programs (separate executables started by Monkey Viewer - not linked into it)
+-----------------------------------------------------------------------------------------
+DjVuLibre 3.5.29  ddjvu    GPL-2.0   DjVu pages      https://sourceforge.net/projects/djvu/files/DjVuLibre/3.5.29/
+LibreDWG 0.13.3   dwg2dxf  GPL-3.0   DWG drawings    https://ftp.gnu.org/gnu/libredwg/libredwg-0.13.3.tar.xz
+GnuPG 2.5.21      gpg      GPL-3.0 (libraries LGPL)  .gpg / .pgp   https://gnupg.org/ftp/gcrypt/gnupg/
+  They are installed in tools\djvulibre, tools\libredwg and tools\gnupg (macOS: Contents/Resources/tools) together with their
+  licence texts, unmodified, and can be replaced or removed independently of Monkey Viewer. The complete
+  corresponding source code is available at the links above; on request it is also provided by the publisher.
+  Windows binaries: official DjVuLibre Windows build and LibreDWG release win64 build (SHA-256 verified,
+  see packaging/windows/fetch_helpers.ps1); macOS binaries: Homebrew builds.
+
+Optional helper programs (not bundled; used only when installed separately and not disabled by policy)
+-------------------------------------------------------------------------------------------------------
+Gpg4win / Kleopatra (GPL)           key management for GnuPG            https://gpg4win.org
+ODA File Converter (ODA freeware)   DWG drawings (used instead of LibreDWG when installed)  https://www.opendesign.com

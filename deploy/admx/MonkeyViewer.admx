@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <policyNamespaces>
+    <target prefix="monkeyviewer" namespace="Easy.Policies.MonkeyViewer" />
+    <using prefix="windows" namespace="Microsoft.Policies.Windows" />
+  </policyNamespaces>
+  <resources minRequiredRevision="1.0" />
+  <supportedOn>
+    <definitions>
+      <definition name="SUPPORTED_MonkeyViewer" displayName="$(string.SUPPORTED_MonkeyViewer)" />
+    </definitions>
+  </supportedOn>
+  <categories>
+    <category name="MonkeyViewer" displayName="$(string.MonkeyViewer)" />
+  </categories>
+  <policies>
+    <policy name="DisableAssociationPrompt" class="Both" displayName="$(string.DisableAssociationPrompt)" explainText="$(string.DisableAssociationPrompt_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="DisableAssociationPrompt">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="DisableAssociationChanges" class="Both" displayName="$(string.DisableAssociationChanges)" explainText="$(string.DisableAssociationChanges_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="DisableAssociationChanges">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="DisableExternalTools" class="Both" displayName="$(string.DisableExternalTools)" explainText="$(string.DisableExternalTools_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="DisableExternalTools">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="DisableDecryption" class="Both" displayName="$(string.DisableDecryption)" explainText="$(string.DisableDecryption_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="DisableDecryption">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="ReadOnly" class="Both" displayName="$(string.ReadOnly)" explainText="$(string.ReadOnly_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="ReadOnly">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="DisablePrinting" class="Both" displayName="$(string.DisablePrinting)" explainText="$(string.DisablePrinting_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="DisablePrinting">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="DisableWeather" class="Both" displayName="$(string.DisableWeather)" explainText="$(string.DisableWeather_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="DisableWeather">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="DisableAuditLog" class="Both" displayName="$(string.DisableAuditLog)" explainText="$(string.DisableAuditLog_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="DisableAuditLog">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="EventLog" class="Both" displayName="$(string.EventLog)" explainText="$(string.EventLog_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="EventLog">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="AuditLogPath" class="Both" displayName="$(string.AuditLogPath)" explainText="$(string.AuditLogPath_Help)" key="SOFTWARE\Policies\MonkeyViewer" presentation="$(presentation.AuditLogPath)">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <elements>
+        <text id="AuditLogPath" valueName="AuditLogPath" expandable="true" required="true" />
+      </elements>
+    </policy>
+    <policy name="AuditFileHashes" class="Both" displayName="$(string.AuditFileHashes)" explainText="$(string.AuditFileHashes_Help)" key="SOFTWARE\Policies\MonkeyViewer" valueName="AuditFileHashes">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <enabledValue><decimal value="1" /></enabledValue>
+      <disabledValue><decimal value="0" /></disabledValue>
+    </policy>
+    <policy name="Language" class="Both" displayName="$(string.Language)" explainText="$(string.Language_Help)" key="SOFTWARE\Policies\MonkeyViewer" presentation="$(presentation.Language)">
+      <parentCategory ref="MonkeyViewer" />
+      <supportedOn ref="SUPPORTED_MonkeyViewer" />
+      <elements>
+        <enum id="Language" valueName="Language" required="true">
+          <item displayName="$(string.Language_ka)">
+            <value><string>ka</string></value>
+          </item>
+          <item displayName="$(string.Language_en)">
+            <value><string>en</string></value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+  </policies>
+</policyDefinitions>

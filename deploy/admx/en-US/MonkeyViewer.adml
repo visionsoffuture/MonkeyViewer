@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Monkey Viewer</displayName>
+  <description>Settings for Monkey Viewer, the viewer for specialist files.</description>
+  <resources>
+    <stringTable>
+      <string id="MonkeyViewer">Monkey Viewer</string>
+      <string id="SUPPORTED_MonkeyViewer">Monkey Viewer 1.0 and later</string>
+      <string id="DisableAssociationPrompt">Don't ask users to choose file types</string>
+      <string id="DisableAssociationPrompt_Help">Monkey Viewer normally asks once, on first start, which file types should open in it. Enable this to skip that question (for example when file types are deployed centrally).</string>
+      <string id="DisableAssociationChanges">Prevent users from changing file associations</string>
+      <string id="DisableAssociationChanges_Help">Hides File associations and Remove all associations. Monkey Viewer then never changes which program opens which file type.</string>
+      <string id="DisableExternalTools">Don't start helper programs</string>
+      <string id="DisableExternalTools_Help">Monkey Viewer never starts GnuPG, DjVuLibre or ODA File Converter, even when they are installed. Their file types are shown as information only.</string>
+      <string id="DisableDecryption">Don't decrypt files</string>
+      <string id="DisableDecryption_Help">Encrypted files (.enc, .gpg, .p7m enveloped data...) are identified and described, but never decrypted. Signature checks remain available.</string>
+      <string id="ReadOnly">View-only mode</string>
+      <string id="ReadOnly_Help">Nothing can be saved or exported from Monkey Viewer: Save, Save As, Export and PDF tools that write files are blocked.</string>
+      <string id="DisablePrinting">Turn off printing</string>
+      <string id="DisablePrinting_Help">File → Print and Ctrl+P are blocked for every document type.</string>
+      <string id="DisableWeather">Turn off the weather forecast</string>
+      <string id="DisableWeather_Help">The weather corner of the status bar is hidden and Monkey Viewer makes no internet connection at all. (The forecast is the only one: the coordinates of the chosen Georgian city are sent to api.met.no, nothing else.)</string>
+      <string id="DisableAuditLog">Turn off the local audit log</string>
+      <string id="DisableAuditLog_Help">Monkey Viewer keeps %APPDATA%\MonkeyViewer\audit.log (who opened, saved, exported, decrypted or verified which file). Enable this policy to stop writing it.</string>
+      <string id="EventLog">Write audit events to the Windows event log</string>
+      <string id="EventLog_Help">Also writes every audit event to the Application log, source "MonkeyViewer" (registered by the MSI), so it can be collected centrally (Windows Event Forwarding, SIEM).</string>
+      <string id="AuditLogPath">Additional audit log file</string>
+      <string id="AuditLogPath_Help">Also appends audit events (JSON lines) to this file, e.g. \\server\audit$\MonkeyViewer\%USERNAME%.jsonl. Environment variables are expanded.</string>
+      <string id="AuditFileHashes">Record file hashes in the audit log</string>
+      <string id="AuditFileHashes_Help">Adds the SHA-256 of every opened file to the audit log. Costs some time for very large files.</string>
+      <string id="Language">Interface language</string>
+      <string id="Language_Help">Sets the language of Monkey Viewer's interface for everyone and hides the choice in More &gt; Language. Not configured: each user chooses; the default follows the Windows display language.</string>
+      <string id="Language_ka">Georgian (ქართული)</string>
+      <string id="Language_en">English</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AuditLogPath">
+        <textBox refId="AuditLogPath">
+          <label>Path:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Language">
+        <dropdownList refId="Language" noSort="true" defaultItem="0">Language:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

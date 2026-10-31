@@ -1,0 +1,15 @@
+# Runtime components bundled into Monkey Viewer (all permissive or LGPL/AGPL — see THIRD_PARTY_NOTICES.txt)
+pymupdf==1.28.2          # PDF / XPS / EPUB engine (AGPL-3.0)
+pillow                   # images (MIT-CMU)
+numpy                    # rendering maths (BSD-3-Clause)
+ezdxf                    # DXF / DWG drawings (MIT)
+pyshp                    # Shapefile / dBASE (MIT)
+cryptography             # certificates, CMS, AES (Apache-2.0 OR BSD-3-Clause)
+asn1crypto               # CMS / PKCS#7 structures (MIT)
+defusedxml               # safe XML parsing (PSF-2.0)
+tkinterdnd2              # drag & drop (MIT)
+pi-heif                  # HEIC / AVIF decoding only (BSD-3-Clause; bundled libheif LGPL-3.0)
+resvg-py==0.5.0          # SVG rendering - resvg (binding MIT; resvg Apache-2.0 OR MIT)
+
+# Build tools (not shipped)
+pyinstaller              # GPL-2.0 with bootloader exception

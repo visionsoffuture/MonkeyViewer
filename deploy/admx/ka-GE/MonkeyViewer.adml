@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Monkey Viewer</displayName>
+  <description>Monkey Viewer-ის (სპეციფიური ფაილების მნახველის) პარამეტრები.</description>
+  <resources>
+    <stringTable>
+      <string id="MonkeyViewer">Monkey Viewer</string>
+      <string id="SUPPORTED_MonkeyViewer">Monkey Viewer 1.0 და უფრო ახალი</string>
+      <string id="DisableAssociationPrompt">ფაილის ტიპების შერჩევის ფანჯარა არ გამოჩნდეს</string>
+      <string id="DisableAssociationPrompt_Help">პირველ გაშვებაზე Monkey Viewer მომხმარებელს ეკითხება, რომელი ფაილის ტიპები გაიხსნას მასში. ჩართვის შემთხვევაში ეს კითხვა აღარ ჩნდება.</string>
+      <string id="DisableAssociationChanges">მომხმარებელმა ვერ შეცვალოს ფაილის ასოციაციები</string>
+      <string id="DisableAssociationChanges_Help">იმალება File associations და Remove all associations. Monkey Viewer ფაილის ტიპების მიბმას არასდროს ცვლის.</string>
+      <string id="DisableExternalTools">დამხმარე პროგრამები არ გაეშვას</string>
+      <string id="DisableExternalTools_Help">Monkey Viewer არ უშვებს GnuPG-ს, DjVuLibre-ს და ODA File Converter-ს, დაყენებულიც რომ იყოს.</string>
+      <string id="DisableDecryption">ფაილები არ გაიშიფროს</string>
+      <string id="DisableDecryption_Help">დაშიფრული ფაილები (.enc, .gpg, დაშიფრული .p7m...) იცნობა და აღიწერება, მაგრამ არ იშიფრება. ხელმოწერის შემოწმება რჩება.</string>
+      <string id="ReadOnly">მხოლოდ ნახვის რეჟიმი</string>
+      <string id="ReadOnly_Help">Monkey Viewer-იდან ვერაფერი შეინახება და ვერ დაექსპორტდება (Save, Save As, Export, PDF ხელსაწყოები, რომლებიც ფაილს წერენ).</string>
+      <string id="DisablePrinting">ბეჭდვის გამორთვა</string>
+      <string id="DisablePrinting_Help">ფაილი → ბეჭდვა და Ctrl+P იბლოკება ყველა ტიპის დოკუმენტისთვის.</string>
+      <string id="DisableWeather">ამინდის პროგნოზის გამორთვა</string>
+      <string id="DisableWeather_Help">სტატუსის ზოლში ამინდი აღარ ჩანს და Monkey Viewer ინტერნეტს საერთოდ აღარ უკავშირდება. (პროგნოზი ერთადერთი კავშირია: api.met.no-ს ეგზავნება მხოლოდ არჩეული ქალაქის კოორდინატები.)</string>
+      <string id="DisableAuditLog">ლოკალური აუდიტის ჟურნალის გამორთვა</string>
+      <string id="DisableAuditLog_Help">Monkey Viewer წერს %APPDATA%\MonkeyViewer\audit.log-ს (ვინ რომელი ფაილი გახსნა, შეინახა, დააექსპორტა, გაშიფრა ან შეამოწმა). ჩართვისას ჟურნალი აღარ იწერება.</string>
+      <string id="EventLog">აუდიტის მოვლენები Windows Event Log-ში</string>
+      <string id="EventLog_Help">აუდიტის ყველა მოვლენა იწერება Application ჟურნალშიც (წყარო "MonkeyViewer", რეგისტრირდება MSI-ით) — ცენტრალიზებული შეგროვებისთვის (Event Forwarding, SIEM).</string>
+      <string id="AuditLogPath">დამატებითი აუდიტის ფაილი</string>
+      <string id="AuditLogPath_Help">აუდიტის მოვლენები (JSON lines) დამატებით ამ ფაილშიც ჩაიწერება, მაგ. \\server\audit$\MonkeyViewer\%USERNAME%.jsonl. გარემოს ცვლადები იხსნება.</string>
+      <string id="AuditFileHashes">ფაილების ჰეშები აუდიტის ჟურნალში</string>
+      <string id="AuditFileHashes_Help">ყოველი გახსნილი ფაილის SHA-256 ჩაიწერება აუდიტის ჟურნალში.</string>
+      <string id="Language">ინტერფეისის ენა</string>
+      <string id="Language_Help">ადგენს Monkey Viewer-ის ინტერფეისის ენას ყველასთვის და მალავს არჩევანს მენიუში „მეტი &gt; ენა“. თუ არ არის კონფიგურირებული — თითოეული მომხმარებელი თავად ირჩევს; ნაგულისხმევად Windows-ის ენა გამოიყენება.</string>
+      <string id="Language_ka">ქართული</string>
+      <string id="Language_en">ინგლისური (English)</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="AuditLogPath">
+        <textBox refId="AuditLogPath">
+          <label>გზა:</label>
+        </textBox>
+      </presentation>
+      <presentation id="Language">
+        <dropdownList refId="Language" noSort="true" defaultItem="0">ენა:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

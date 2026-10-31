@@ -1,0 +1,5 @@
+# Test & audit tools used by the build pipeline (not shipped)
+pytest
+bandit
+pip-audit
+cyclonedx-bom

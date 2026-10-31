@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+build/
+dist/
+release/
+.build-venv*/
+.venv/
+viewer/_build_info.py
+*.msi
+*.dmg
+.pytest_cache/

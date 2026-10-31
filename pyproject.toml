@@ -1,0 +1,18 @@
+[project]
+name = "lua-viewer"
+dynamic = ["version"]
+description = "Viewer for specialist files: PDF & DjVu, CAD, GIS, 3D, signed & encrypted files, Lua code"
+requires-python = ">=3.10"
+license = { file = "LICENSE.txt" }
+authors = [{ name = "easy" }]
+
+[tool.bandit]
+# Accepted, documented patterns (see docs/AUDIT.md, "Static analysis"):
+#  B110/B112  best-effort fallbacks (e.g. optional thumbnails) deliberately ignore failures
+#  B404/B603  subprocess is used only with argument lists (never a shell) and absolute executable paths
+exclude_dirs = ["tests", "build", "dist", ".build-venv-mac"]
+skips = ["B110", "B112", "B404", "B603"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["gui: opens real windows (needs a desktop session)"]

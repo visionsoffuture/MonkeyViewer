@@ -1,0 +1,30 @@
+Monkey Viewer
+Copyright (c) 2026 easy. All rights reserved.
+
+1. Licence grant
+   The publisher grants the organisation that received this software from the publisher (the "Licensee")
+   a non-exclusive, non-transferable right to install and use Monkey Viewer on any number of the Licensee's
+   own computers, for the Licensee's internal purposes.
+
+2. Restrictions
+   The Licensee may not sell, rent or distribute Monkey Viewer to third parties.
+
+3. Third-party components
+   Monkey Viewer contains third-party components that remain under their own licences; they are listed with
+   versions and licences in THIRD_PARTY_NOTICES.txt, and their full licence texts are installed in the
+   "licenses" folder. Nothing in this licence restricts rights those licences give you.
+
+   In particular, the PDF engine PyMuPDF / MuPDF is licensed under the GNU Affero General Public Licence
+   version 3 (AGPL-3.0). Monkey Viewer is used inside the Licensee's organisation only. Should Monkey Viewer ever be
+   conveyed to anyone outside that organisation, it must either be accompanied by its complete corresponding
+   source code under the AGPL-3.0, or a commercial MuPDF licence must be obtained from Artifex Software.
+   The complete source code of each release is published together with that release.
+
+4. No warranty
+   Monkey Viewer is provided "as is", without warranty of any kind, express or implied. To the extent permitted
+   by law, the publisher is not liable for any damage arising from its use.
+
+---------------------------------------------------------------------------------------------------------
+ქართული მოკლე შინაარსი: Monkey Viewer-ის გამოყენება ნებადართულია მხოლოდ იმ ორგანიზაციის შიდა საჭიროებისთვის,
+რომელმაც პროგრამა გამომცემლისგან მიიღო; მესამე პირებზე გავრცელება აკრძალულია. მესამე მხარის კომპონენტები
+საკუთარი ლიცენზიებით ვრცელდება (იხ. THIRD_PARTY_NOTICES.txt).
