@@ -474,9 +474,13 @@ class InfoTab(BaseTab):
         box = tk.Frame(parent, bg=C["bg_deep"])
         color = theme.KIND_COLORS.get(self.category, C["fg_muted"])
         glyph, _f = theme.icon(formats.CATEGORIES.get(self.category, (0, 0, "document"))[2])
-        tk.Label(box, image=theme.tile_image(color, 96, alpha=36), text=glyph or formats.badge_label(self.path),
-                 compound="center", font=FONTS["icon_xl"] if glyph else FONTS["h2"], fg=color,
-                 bg=C["bg_deep"]).pack()
+        file_icon = theme.file_icon_image(self.category, px(96))
+        if file_icon is not None:
+            tk.Label(box, image=file_icon, bg=C["bg_deep"]).pack()
+        else:
+            tk.Label(box, image=theme.tile_image(color, 96, alpha=36), text=glyph or formats.badge_label(self.path),
+                     compound="center", font=FONTS["icon_xl"] if glyph else FONTS["h2"], fg=color,
+                     bg=C["bg_deep"]).pack()
         self.placeholder_text = tk.Label(box, text="", font=FONTS["small"], bg=C["bg_deep"], fg=C["fg_muted"])
         self.placeholder_text.pack(pady=(px(12), 0))
         return box

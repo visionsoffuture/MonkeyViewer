@@ -902,8 +902,12 @@ class App:
         color = theme.KIND_COLORS.get(cat, C["accent"])
         tile = tk.Frame(grid, bg=C["bg"], cursor="hand2")
         glyph, _f = theme.icon(icon_name, allow_fallback=False)
-        ico = tk.Label(tile, image=theme.tile_image(color, 38), text=glyph or title[0], compound="center",
-                       font=FONTS["icon_lg"] if glyph else FONTS["h3"], fg=color, bg=C["bg"])
+        file_icon = theme.file_icon_image(cat, px(44))
+        if file_icon is not None:
+            ico = tk.Label(tile, image=file_icon, bg=C["bg"])
+        else:
+            ico = tk.Label(tile, image=theme.tile_image(color, 38), text=glyph or title[0], compound="center",
+                           font=FONTS["icon_lg"] if glyph else FONTS["h3"], fg=color, bg=C["bg"])
         ico.pack(side="left", padx=(px(10), px(12)), pady=px(9))
         txt = tk.Frame(tile, bg=C["bg"])
         txt.pack(side="left", fill="x", expand=True)

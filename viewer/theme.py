@@ -422,11 +422,21 @@ def _badge_font(size):
 
 
 def badge_image(label, color, width=32, height=17):
-    """Small rounded 'pill' with the file extension, tinted with the category colour."""
+    """The file-type label in tabs and lists: the type name on a band in the category colour plus the monkey
+    tile (Monkey Viewer's file icon in small). A tinted pill when resvg is not available."""
     key = ("badge", label, color, width, height)
     if key in _IMAGES:
         return _IMAGES[key]
     w, h = px(width), px(height)
+    from . import monkey
+    if Image is not None and monkey.available():
+        try:
+            img = ImageTk.PhotoImage(monkey.type_chip(label, color, w, h, _badge_font))
+        except Exception:
+            img = None
+        if img is not None:
+            _IMAGES[key] = img
+            return img
     if Image is None:
         img = tk.PhotoImage(width=w, height=h)
         img.put(mix(color, C["bg"], 0.65), to=(0, 0, w, h))
@@ -492,6 +502,22 @@ def moon_image(size, color=None, plate=False):
         md.ellipse((bx - br, by - br, bx + br, by + br), fill=0)
         big.paste(hex_to_rgb(color) + (255,), (0, 0), mask)
         img = ImageTk.PhotoImage(big.resize((size, size), Image.LANCZOS))
+    _IMAGES[key] = img
+    return img
+
+
+def file_icon_image(category, size):
+    """The file icon (as in Explorer / Finder) for a program category, or None without resvg."""
+    key = ("fileicon", category, size)
+    if key in _IMAGES:
+        return _IMAGES[key]
+    from . import monkey
+    if Image is None or not monkey.available():
+        return None
+    try:
+        img = ImageTk.PhotoImage(monkey.file_icon(monkey.CATEGORY_TYPE.get(category, "file"), size, _badge_font))
+    except Exception:
+        return None
     _IMAGES[key] = img
     return img
 

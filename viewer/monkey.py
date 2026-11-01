@@ -99,6 +99,68 @@ def render(svg, size):
     return img
 
 
+# file type -> (label colour, label): the same in Explorer / Finder (tools/make_icons.py) and inside the program
+TYPES = {
+    "pdf": ("#e5484d", "PDF"),
+    "djvu": ("#d6406f", "DJVU"),
+    "cad": ("#e0a23a", "CAD"),
+    "gis": ("#46a758", "GIS"),
+    "secure": ("#b8862a", "KEY"),
+    "code": ("#5b6bd6", "</>"),
+    "lua": ("#3e7bfa", "LUA"),
+    "data": ("#12a594", "DATA"),
+    "image": ("#8e4ec6", "IMG"),
+    "file": ("#7d7f8c", "FILE"),
+}
+# the program's file categories (formats.CATEGORIES) -> icon type
+CATEGORY_TYPE = {"pdf": "pdf", "cad": "cad", "gis": "gis", "secure": "secure", "code": "lua", "table": "data",
+                 "image": "image"}
+
+
+def _fit_text(draw, text, font_for, max_w, max_h):
+    fs = max(6, round(max_h * 1.3))
+    f = font_for(fs)
+    box = draw.textbbox((0, 0), text, font=f)
+    fs = max(6, round(fs * min(max_w / max(1, box[2] - box[0]), max_h / max(1, box[3] - box[1]))))
+    return font_for(fs)
+
+
+def file_icon(kind, size, font_for, label=None):
+    """PIL image of the file icon for *kind* (a TYPES key) with its label set on the band.
+    *font_for(px)* returns a bold PIL font. Below 24 px the band carries no text (it would not read)."""
+    from PIL import Image, ImageDraw
+    color, default = TYPES.get(kind, TYPES["file"])
+    label = label or default
+    small = size <= 32
+    n = max(512, size * 8)
+    img = render(file_icon_svg(color, small=small), n)
+    if size >= 24:
+        d = ImageDraw.Draw(img)
+        u = n / 84                                       # SVG units -> pixels
+        bx, by, bw, bh = (4, 22, 56, 26) if small else (8, 26, 44, 20)
+        f = _fit_text(d, label, font_for, bw * u * 0.84, bh * u * (0.62 if small else 0.56))
+        d.text(((bx + bw / 2) * u, (by + bh / 2) * u), label, font=f, fill=(255, 255, 255, 255), anchor="mm")
+    return img.resize((size, size), Image.LANCZOS)
+
+
+def type_chip(label, color, width, height, font_for):
+    """The small type label inside the program (tabs, file lists): the type name on a solid band in the
+    category colour, followed by the yellow monkey tile - the file icon's two parts side by side."""
+    from PIL import Image, ImageDraw
+    ss = 4
+    w, h = width * ss, height * ss
+    gap = max(1, round(h * 0.12))
+    img = Image.new("RGBA", (w + gap + h, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    rgb = tuple(int(color[i:i + 2], 16) for i in (1, 3, 5))
+    d.rounded_rectangle((0, 0, w - 1, h - 1), radius=round(h * 0.28), fill=rgb + (255,))
+    light = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) > 168      # pale band: dark text
+    f = _fit_text(d, label, font_for, w * 0.8, h * 0.5)
+    d.text((w / 2, h / 2), label, font=f, fill=(26, 22, 32, 255) if light else (255, 255, 255, 255), anchor="mm")
+    img.alpha_composite(render(logo_svg(True, tiny=True), h), (w + gap, 0))
+    return img.resize(((w + gap + h) // ss, height), Image.LANCZOS)
+
+
 def available():
     try:
         import resvg_py  # noqa: F401

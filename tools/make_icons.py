@@ -11,7 +11,7 @@ needs this script; run it again only after changing a design here.
 import os
 import sys
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -19,21 +19,8 @@ from viewer import monkey  # noqa: E402
 
 OUT = os.path.join(ROOT, "packaging", "icons")
 
-# type: (label colour, label) - the label sits on the page's coloured band
-ICONS = {
-    "pdf": ("#e5484d", "PDF"),
-    "djvu": ("#d6406f", "DJVU"),
-    "cad": ("#e0a23a", "CAD"),
-    "gis": ("#46a758", "GIS"),
-    "secure": ("#b8862a", "KEY"),
-    "code": ("#5b6bd6", "</>"),
-    "lua": ("#3e7bfa", "LUA"),
-    "data": ("#12a594", "DATA"),
-    "image": ("#8e4ec6", "IMG"),
-    "file": ("#7d7f8c", "FILE"),
-}
+ICONS = monkey.TYPES
 ICO_SIZES = (16, 20, 24, 32, 40, 48, 64, 96, 128, 256)
-SMALL = 32                                              # up to this size: wide band, big badge, no text below 24
 
 FONTS = ("/usr/share/fonts/opentype/inter/Inter-Black.otf", "/usr/share/fonts/opentype/inter/Inter-Bold.otf",
          "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
@@ -48,23 +35,8 @@ def font(px):
 
 
 def render(name, size):
-    """One file icon at *size* px: drawn large, the label set in the band, then scaled down."""
-    color, label = ICONS[name]
-    small = size <= SMALL
-    n = max(512, size * 8)
-    img = monkey.render(monkey.file_icon_svg(color, small=small), n)
-    if size >= 24:
-        d = ImageDraw.Draw(img)
-        u = n / 84                                       # SVG units -> pixels
-        bx, by, bw, bh = (4, 22, 56, 26) if small else (8, 26, 44, 20)
-        target_w, target_h = bw * u * 0.84, bh * u * (0.62 if small else 0.56)
-        fs = round(target_h * 1.3)
-        f = font(fs)
-        box = d.textbbox((0, 0), label, font=f)
-        fs = max(8, round(fs * min(target_w / (box[2] - box[0]), target_h / (box[3] - box[1]))))
-        f = font(fs)
-        d.text(((bx + bw / 2) * u, (by + bh / 2) * u), label, font=f, fill=(255, 255, 255, 255), anchor="mm")
-    return img.resize((size, size), Image.LANCZOS)
+    """One file icon at *size* px (viewer/monkey.py draws it; the label is set in this script's font)."""
+    return monkey.file_icon(name, size, font)
 
 
 def app_icon(size):
